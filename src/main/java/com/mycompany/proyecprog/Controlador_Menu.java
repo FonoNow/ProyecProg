@@ -13,12 +13,12 @@ import java.awt.event.ActionListener;
  */
 public class Controlador_Menu implements ActionListener{
    public Menu menu;
-   public Nuevo nuevo;
+   public Controlador_Nuevo contnuevo;
 
     public Controlador_Menu() {
         this.menu = new Menu();
-        this.nuevo = new Nuevo();
         menu.boton_nuevoempleado.addActionListener(this);
+        contnuevo= new Controlador_Nuevo();
     }
    public void Menuvisible(){
        menu.setVisible(true);
@@ -26,7 +26,7 @@ public class Controlador_Menu implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() ==menu.boton_nuevoempleado){
-            nuevo.setVisible(true);
+            contnuevo.nuevo.setVisible(true);
             
             
         }
