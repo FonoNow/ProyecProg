@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
  *
  * @author PC
  */
-public class Controlador implements ActionListener{
+public class Controlador_Menu implements ActionListener{
    public Menu menu;
    public Nuevo nuevo;
 
-    public Controlador() {
+    public Controlador_Menu() {
         this.menu = new Menu();
         this.nuevo = new Nuevo();
         menu.boton_nuevoempleado.addActionListener(this);
