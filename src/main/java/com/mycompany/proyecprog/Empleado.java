@@ -13,17 +13,25 @@ public class Empleado {
     private int DNI;
     private String Nombre;
     private  String Direccion;
-    private  int NroTelefono;
+    private  String NroTelefono;
     private  double SueldoBase;
     private  int Puntos;
     private boolean tipo_empleado;
 
     public Empleado() {
     }
-    
+    public Empleado(int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos, boolean tipo_empleado) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Direccion = Direccion;
+        this.NroTelefono = NroTelefono;
+        this.SueldoBase = SueldoBase;
+        this.Puntos = Puntos;
+        this.tipo_empleado = tipo_empleado;
+    }
     
 
-    public Empleado(int DNI, String Nombre, String Direccion, int NroTelefono, double SueldoBase, int Puntos) {
+    public Empleado(int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos) {
         this.DNI = DNI;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
@@ -35,7 +43,7 @@ public class Empleado {
         return 0;
     };
     //constructor para la clase EmpleadoDAO
-    public Empleado(int idEmpleado, int DNI, String Nombre, String Direccion, int NroTelefono, double SueldoBase, int Puntos, boolean tipo_empleado) {
+    public Empleado(int idEmpleado, int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos, boolean tipo_empleado) {
         this.idEmpleado = idEmpleado;
         this.DNI = DNI;
         this.Nombre = Nombre;
@@ -70,11 +78,11 @@ public class Empleado {
         this.Direccion = Direccion;
     }
 
-    public int getNroTelefono() {
+    public String getNroTelefono() {
         return NroTelefono;
     }
 
-    public void setNroTelefono(int NroTelefono) {
+    public void setNroTelefono(String NroTelefono) {
         this.NroTelefono = NroTelefono;
     }
 

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear una clase DAO por cada una
 
     private static final String SQL_INSERTAR_EMPLEADO
-            = "INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado) VALUES (    ); ";
+            = "INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado) VALUES (?,?,?,?,?,?,?);";
 
     private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado;";
     //lo conveniente es crear las consultas al principio
@@ -48,7 +48,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
                 int dni = rs.getInt("DNI");
                 String nombre = rs.getString("Nombre");
                 String direccion = rs.getString("Direccion");
-                int nro = rs.getInt("NroTelefono");
+                String nro = rs.getString("NroTelefono");
                 double SueldoBase = rs.getDouble("SueldoBase");
                 int puntos = rs.getInt("Puntos");
                 boolean tipo = rs.getBoolean("tipo_empleado");
@@ -69,5 +69,35 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
         return empleados;
     }
     
+    
+    public int insertar(Empleado empleado){
+        Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_INSERTAR_EMPLEADO);
+            stmt.setInt(1, empleado.getDNI());//1 seria el parametro de la consulta, es dcir a: ?
+            stmt.setString(2, empleado.getNombre());
+            stmt.setString(3, empleado.getDireccion());
+            stmt.setString(4, empleado.getNroTelefono());
+            stmt.setDouble(5, empleado.getSueldoBase());
+            stmt.setDouble(6, empleado.getPuntos());
+            stmt.setBoolean(7, empleado.isTipo_empleado());//tipo_empleado es booleano
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        return registros;
+    }
     
 }

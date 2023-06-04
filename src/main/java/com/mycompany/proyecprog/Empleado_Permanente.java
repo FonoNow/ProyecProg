@@ -35,7 +35,7 @@ public class Empleado_Permanente extends Empleado {
         return Incentivo;
     }
 
-    public Empleado_Permanente(int IDPermanente, double Incentivo,int DNI,String NOMBRE,String Direccion, int NroTelefono, double SueldoBase, int Puntos) {
+    public Empleado_Permanente(int IDPermanente, double Incentivo,int DNI,String NOMBRE,String Direccion, String NroTelefono, double SueldoBase, int Puntos) {
         super(DNI,NOMBRE,Direccion,NroTelefono,SueldoBase,Puntos);
         this.IDPermanente = IDPermanente;
         this.Incentivo = Incentivo;
