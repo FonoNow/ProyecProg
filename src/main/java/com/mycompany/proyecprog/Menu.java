@@ -28,6 +28,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         boton_nuevoempleado = new javax.swing.JButton();
+        Consultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,6 +39,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        Consultar.setText("Consultar Empleado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -45,13 +48,17 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(boton_nuevoempleado)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(Consultar)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(boton_nuevoempleado)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_nuevoempleado)
+                    .addComponent(Consultar))
                 .addContainerGap(218, Short.MAX_VALUE))
         );
 
@@ -98,6 +105,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Consultar;
     public javax.swing.JButton boton_nuevoempleado;
     // End of variables declaration//GEN-END:variables
 }
