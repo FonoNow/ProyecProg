@@ -19,7 +19,10 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
 
     private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado;";
     //lo conveniente es crear las consultas al principio
-
+    
+    //private static final String SQL_ELIMINAR_EMPLEADO=;
+    
+    
     public List<Empleado> seleccionar() {
         Connection conn = null;//variable de tipo conexion
         PreparedStatement stmt = null;          //en este caso es mas conveniente usar preparedstatement para trabajar conq querys

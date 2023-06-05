@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class CursoDAO {
      private static final String SQL_INSERTAR_CURSO=
-             "INSERT INTO `cursos`(Titulo,CargaHoraria,Puntos,fecha_inicio,fecha_fin,Realizacion_prev,tiempo_limite)VALUES(?,?,?,?,?,?,?);";
+             "INSERT INTO `cursos`(Titulo,CargaHoraria,Puntos,Realizacion_prev,tiempo_limite)VALUES(?,?,?,?,?);";
      private static final String SQL_SELECCIONAR_CURSO=
              "SELECT Codigo, Titulo, CargaHoraria, Puntos, fecha_inicio, fecha_fin, Realizacion_prev,tiempo_limite FROM cursos;";
              
@@ -34,10 +34,8 @@ public class CursoDAO {
             stmt.setString(1, curso.getTitulo());//1 seria el parametro de la consulta, es dcir a: ?
             stmt.setInt(2, curso.getCargaHoraria());
             stmt.setInt(3, curso.getPuntos());
-            stmt.setString(4, curso.getFechaInicio());
-            stmt.setString(5, curso.getFechaFin());
-            stmt.setString(6, curso.realizacionPrevia());
-            stmt.setInt(7, curso.getMaxCantMeses());//tipo_empleado es booleano
+            stmt.setString(4, curso.realizacionPrevia());
+            stmt.setInt(5, curso.getMaxCantMeses());//tipo_empleado es booleano
             registros=stmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
