@@ -36,6 +36,13 @@ public class unCurso {
         this.MaxCantMeses = MaxCantMeses;
         
     }
+
+    public unCurso(String Titulo, int Puntos, int CargaHoraria, int MaxCantMeses) {
+        this.Titulo = Titulo;
+        this.Puntos = Puntos;
+        this.CargaHoraria = CargaHoraria;
+        this.MaxCantMeses = MaxCantMeses;
+    }
    
    
    

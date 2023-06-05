@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyecprog;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author PC
@@ -17,9 +19,12 @@ public class Empleado {
     private  double SueldoBase;
     private  int Puntos;
     private boolean tipo_empleado;
-
+    public ArrayList <unCurso> A = new ArrayList();
     public Empleado() {
     }
+    
+    
+    
     public Empleado(int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos, boolean tipo_empleado) {
         this.DNI = DNI;
         this.Nombre = Nombre;

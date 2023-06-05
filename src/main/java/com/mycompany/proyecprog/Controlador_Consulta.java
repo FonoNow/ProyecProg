@@ -7,6 +7,7 @@ package com.mycompany.proyecprog;
 import datos.EmpleadoDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,13 @@ public class Controlador_Consulta implements ActionListener {
             }
         }
         if(e.getSource() ==consu.boton_cursos){
+            if(e1.)
+            System.out.println(e1.getIdEmpleado());
+            int cur=em.obtenerCurso(e1.getIdEmpleado());
+            System.out.println(em.obtenerCurso(e1.getIdEmpleado()));
+            JOptionPane.showMessageDialog(null,"La cantidad de cursos realizados por: "+e1.getNombre()+ " es "+cur);
+        }
+        if(e.getSource()==consu.agregar_curso){
             
         }
     }

@@ -24,33 +24,21 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     
     private static final String SQL_ELIMINAR_EMPLEADO="DELETE FROM empleado WHERE id = ?;";
     
-    private static final String SQL_OBTENERCURSO=
- "SELECT e.DNI, e.Nombre, c.Titulo as titulo curso, cr.fecha_inicio FROM empleado e INNER JOIN cursos_realizados cr ON e.id = cr.id_empl INNER JOIN cursos c ON cr.cod_curso = c.Codigo  WHERE e.id LIKE '?';";
+    private static final String SQL_OBTENERCURSO = "SELECT contar_cursos_realizados(?) AS cantidad; ";
     
-    
-    public Empleado obtenerCurso(int iddd){
+    public int obtenerCurso(int iddd){
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Empleado empleado = null;
+        int cantidad = 0;
         try {
             conn = getConnection();
-            stmt = conn.prepareStatement(SQL_SELECIONAR_DNI);
+            stmt = conn.prepareStatement(SQL_OBTENERCURSO);
             stmt.setInt(1, iddd);
             rs = stmt.executeQuery();
             
-            
-                
                 if (rs.next()) {
-                int id = rs.getInt("id");
-                int dni = rs.getInt("DNI");
-                String nombre = rs.getString("Nombre");
-                String direccion = rs.getString("Direccion");
-                String nro = rs.getString("NroTelefono");
-                double SueldoBase = rs.getDouble("SueldoBase");
-                int puntos = rs.getInt("Puntos");
-                boolean tipo = rs.getBoolean("tipo_empleado");
-                empleado = new Empleado(id, dni, nombre, direccion, nro, SueldoBase, puntos, tipo);
+                cantidad = rs.getInt("cantidad");
 }
             
         } catch (SQLException ex) {
@@ -64,7 +52,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
                 ex.printStackTrace(System.out);
             }
         }
-        return empleado;
+        return cantidad;
     }    
     
     public Empleado seleccionarDNI(int dni_){

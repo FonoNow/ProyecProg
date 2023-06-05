@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         boton_nuevoempleado = new javax.swing.JButton();
         Consultar = new javax.swing.JButton();
         boton_listaempleados = new javax.swing.JButton();
+        crear_curso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,20 +45,25 @@ public class Menu extends javax.swing.JFrame {
 
         boton_listaempleados.setText("Lista Empleados");
 
+        crear_curso.setText("Crear Curso");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(boton_nuevoempleado)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(boton_nuevoempleado))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(boton_listaempleados)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(Consultar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crear_curso)
+                    .addComponent(Consultar))
                 .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(boton_listaempleados)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,7 +73,9 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(boton_nuevoempleado)
                     .addComponent(Consultar))
                 .addGap(37, 37, 37)
-                .addComponent(boton_listaempleados)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boton_listaempleados)
+                    .addComponent(crear_curso))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
 
@@ -117,5 +125,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton Consultar;
     public javax.swing.JButton boton_listaempleados;
     public javax.swing.JButton boton_nuevoempleado;
+    public javax.swing.JButton crear_curso;
     // End of variables declaration//GEN-END:variables
 }
