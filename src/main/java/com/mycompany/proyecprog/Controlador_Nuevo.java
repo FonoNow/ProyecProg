@@ -26,10 +26,10 @@ public class Controlador_Nuevo implements ActionListener{
             try{
                 //String insertar;
                 EmpleadoDAO empleadoDao = new EmpleadoDAO();
-            int DNI=Integer.parseInt(nuevo.nuevoDNI.getText());
-            String Nombre= nuevo.nuevoNombre.getText();
-            String Direccion= nuevo.nuevoDireccion.getText();
-            String Telefono=nuevo.nuevoTelefono.getText();
+                int DNI=Integer.parseInt(nuevo.nuevoDNI.getText());
+                String Nombre= nuevo.nuevoNombre.getText();
+                String Direccion= nuevo.nuevoDireccion.getText();
+                String Telefono=nuevo.nuevoTelefono.getText();
             
            if(nuevo.checkPermanente.isEnabled()){
                 if(DNI>0){
