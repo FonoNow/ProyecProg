@@ -20,7 +20,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado;";
     //lo conveniente es crear las consultas al principio
     
-    //private static final String SQL_ELIMINAR_EMPLEADO=;
+    private static final String SQL_ELIMINAR_EMPLEADO="DELETE FROM empleado WHERE id = ?;";
     
     
     public List<Empleado> seleccionar() {
@@ -103,4 +103,30 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
         return registros;
     }
     
-}
+    
+    public int EliminarEmpleado(Empleado empleado){
+        
+         Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_ELIMINAR_EMPLEADO);
+            stmt.setInt(1, empleado.getIdEmpleado());
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        return registros;
+     }
+    }
+    

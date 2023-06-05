@@ -21,8 +21,10 @@ public class CursoDAO {
      private static final String SQL_INSERTAR_CURSO=
              "INSERT INTO `cursos`(Titulo,CargaHoraria,Puntos,Realizacion_prev,tiempo_limite)VALUES(?,?,?,?,?);";
      private static final String SQL_SELECCIONAR_CURSO=
-             "SELECT Codigo, Titulo, CargaHoraria, Puntos, fecha_inicio, fecha_fin, Realizacion_prev,tiempo_limite FROM cursos;";
-             
+             "SELECT Codigo, Titulo, CargaHoraria, Puntos, Realizacion_prev,tiempo_limite FROM cursos;";
+      
+     private static final String SQL_ELIMINAR_CURSO=
+             "DELETE FROM cursos WHERE codigo = ?;";
              
      public int insertarCurso(unCurso curso){
         Connection conn=null;
@@ -75,13 +77,10 @@ public class CursoDAO {
                 String titu = rs.getString("Titulo");
                 int carga_horaria = rs.getInt("CargaHoraria");
                 int puntoss = rs.getInt("Puntos");
-                
-                String fecha_in = rs.getString("fecha_inicio");
-                String fecha_fin = rs.getString("fecha_fin");
                 String reali = rs.getString("Realizacion_prev");
                 int MaxMeses = rs.getInt("tiempo_limite");
                 
-                unCurso curs= new unCurso(id, titu, puntoss, carga_horaria, fecha_in, fecha_fin, MaxMeses);
+                unCurso curs= new unCurso(id, titu, puntoss, carga_horaria,  MaxMeses);
                 cursos.add(curs);
             }
         } catch (SQLException ex) {
@@ -97,5 +96,29 @@ public class CursoDAO {
         }
         return cursos;
     }
+    
+     public int EliminarCurso(unCurso curso){
+         Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_ELIMINAR_CURSO);
+            stmt.setInt(1, curso.getIDCodigo());
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        return registros;
+     }
      
 }

@@ -54,6 +54,15 @@ public class Empleado {
         this.tipo_empleado = tipo_empleado;
     }
 
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    
     public int getDNI() {
         return DNI;
     }
