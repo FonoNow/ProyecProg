@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
 
         boton_nuevoempleado = new javax.swing.JButton();
         Consultar = new javax.swing.JButton();
+        boton_listaempleados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,6 +42,8 @@ public class Menu extends javax.swing.JFrame {
 
         Consultar.setText("Consultar Empleado");
 
+        boton_listaempleados.setText("Lista Empleados");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,6 +54,10 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(Consultar)
                 .addGap(31, 31, 31))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(boton_listaempleados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +66,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_nuevoempleado)
                     .addComponent(Consultar))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(boton_listaempleados)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,6 +115,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton Consultar;
+    public javax.swing.JButton boton_listaempleados;
     public javax.swing.JButton boton_nuevoempleado;
     // End of variables declaration//GEN-END:variables
 }

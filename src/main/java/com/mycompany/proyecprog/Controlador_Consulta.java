@@ -14,18 +14,21 @@ import java.awt.event.ActionListener;
  */
 public class Controlador_Consulta implements ActionListener {
     public Consulta consu;
+    EmpleadoDAO em = new EmpleadoDAO();
+            Empleado e1 = new Empleado();
     public Controlador_Consulta(){
         consu = new Consulta();
         consu.boton_consultar.addActionListener(this);
+        consu.boton_cursos.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==consu.boton_consultar) {
             System.out.println("boton consulta");
-            EmpleadoDAO em = new EmpleadoDAO();
-            Empleado e1 = new Empleado();
+            
             int dnii=Integer.parseInt(consu.consulta_dni.getText());
             e1=em.seleccionarDNI(dnii);
+            
             consu.nombre_consulta.setText(e1.getNombre());
             consu.telefono_consulta.setText(e1.getNroTelefono());
             consu.direccion_consulta.setText(e1.getDireccion());
@@ -34,6 +37,9 @@ public class Controlador_Consulta implements ActionListener {
             }else{
                 consu.empleadoperma_consulta.setText("no");
             }
+        }
+        if(e.getSource() ==consu.boton_cursos){
+            
         }
     }
 }

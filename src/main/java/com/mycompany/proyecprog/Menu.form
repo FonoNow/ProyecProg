@@ -30,6 +30,11 @@
               <Component id="Consultar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="boton_listaempleados" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -40,7 +45,9 @@
                   <Component id="boton_nuevoempleado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Consultar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="218" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="boton_listaempleados" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="158" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,6 +67,14 @@
     <Component class="javax.swing.JButton" name="Consultar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Consultar Empleado"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="boton_listaempleados">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lista Empleados"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
