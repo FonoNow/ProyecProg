@@ -15,6 +15,7 @@ public class Consulta extends javax.swing.JFrame {
      */
     public Consulta() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -163,16 +164,16 @@ public class Consulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton boton_consultar;
-    private javax.swing.JTextField consulta_dni;
-    private javax.swing.JTextField direccion_consulta;
-    private javax.swing.JTextField empleadoperma_consulta;
+    public javax.swing.JTextField consulta_dni;
+    public javax.swing.JTextField direccion_consulta;
+    public javax.swing.JTextField empleadoperma_consulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField nombre_consulta;
-    private javax.swing.JTextField telefono_consulta;
+    public javax.swing.JTextField nombre_consulta;
+    public javax.swing.JTextField telefono_consulta;
     // End of variables declaration//GEN-END:variables
 }

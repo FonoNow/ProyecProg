@@ -20,7 +20,51 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado;";
     //lo conveniente es crear las consultas al principio
     
+    private static final String SQL_SELECIONAR_DNI = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado WHERE DNI= ?";
+    
     private static final String SQL_ELIMINAR_EMPLEADO="DELETE FROM empleado WHERE id = ?;";
+    
+    
+    
+    public Empleado seleccionarDNI(int dni_){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Empleado empleado = null;
+        
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_SELECIONAR_DNI);
+            stmt.setInt(1, dni_);
+            rs = stmt.executeQuery();
+            
+            
+                
+                if (rs.next()) {
+                int id = rs.getInt("id");
+                int dni = rs.getInt("DNI");
+                String nombre = rs.getString("Nombre");
+                String direccion = rs.getString("Direccion");
+                String nro = rs.getString("NroTelefono");
+                double SueldoBase = rs.getDouble("SueldoBase");
+                int puntos = rs.getInt("Puntos");
+                boolean tipo = rs.getBoolean("tipo_empleado");
+                empleado = new Empleado(id, dni, nombre, direccion, nro, SueldoBase, puntos, tipo);
+}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                Conexion.close(rs);
+                Conexion.close(stmt);
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return empleado;
+    }
     
     
     public List<Empleado> seleccionar() {
@@ -106,7 +150,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     
     public int EliminarEmpleado(Empleado empleado){
         
-         Connection conn=null;
+        Connection conn=null;
         PreparedStatement stmt= null;
         int registros = 0;
         try {

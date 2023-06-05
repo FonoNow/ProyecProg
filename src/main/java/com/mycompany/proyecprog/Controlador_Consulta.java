@@ -21,8 +21,19 @@ public class Controlador_Consulta implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==consu.boton_consultar) {
+            System.out.println("boton consulta");
             EmpleadoDAO em = new EmpleadoDAO();
-            em.seleccionar();
+            Empleado e1 = new Empleado();
+            int dnii=Integer.parseInt(consu.consulta_dni.getText());
+            e1=em.seleccionarDNI(dnii);
+            consu.nombre_consulta.setText(e1.getNombre());
+            consu.telefono_consulta.setText(e1.getNroTelefono());
+            consu.direccion_consulta.setText(e1.getDireccion());
+            if (e1.isTipo_empleado()) {
+                consu.empleadoperma_consulta.setText("si");
+            }else{
+                consu.empleadoperma_consulta.setText("no");
+            }
         }
     }
 }
