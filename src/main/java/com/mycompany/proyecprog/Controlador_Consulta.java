@@ -1,5 +1,6 @@
 package com.mycompany.proyecprog;
 
+import datos.EmpleadoDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +13,9 @@ public class Controlador_Consulta implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        if (e.getSource()==consu.boton_consultar) {
+            EmpleadoDAO em = new EmpleadoDAO();
+            em.seleccionar();
+        }
     }
 }
