@@ -33,6 +33,34 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_UPDATE_EMPLEADO=
     "UPDATE empleado SET DNI = ?, Nombre = ?, Direccion = ?, NroTelefono = ?, SueldoBase = ?, Puntos = ?, tipo_empleado = ? WHERE id=?;";
     
+    private static final String SQL_UPDATE_PUNTOS_EMPL=
+    "UPDATE empleado SET Puntos = ? WHERE id=?; ";
+    
+    
+    public int actualizarPuntos(Empleado empleado){
+        Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_UPDATE_PUNTOS_EMPL);
+            stmt.setDouble(1, empleado.getPuntos());
+            stmt.setInt(2, empleado.getIdEmpleado());
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        return registros;
+    }
     
     
     public int actualizar(Empleado empleado){
