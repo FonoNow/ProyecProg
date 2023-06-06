@@ -30,6 +30,45 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_MUESTRA_CURSOS_REALIZADOS=
     "SELECT e.DNI DNIempleado, e.Nombre Nombre_Empleado, c.Titulo as titulo curso, cr.fecha_inicio, cr.fecha_fin FROM empleado e INNER JOIN cursos_realizados cr ON e.id = cr.id_empl INNER JOIN cursos c ON cr.cod_curso = c.Codigo WHERE id= ?;";
     
+    private static final String SQL_UPDATE_EMPLEADO=
+    "UPDATE empleado SET DNI = ?, Nombre = ?, Direccion = ?, NroTelefono = ?, SueldoBase = ?, Puntos = ?, tipo_empleado = ? WHERE id=?;";
+    
+    
+    
+    public int actualizar(Empleado empleado){
+        Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_UPDATE_EMPLEADO);
+            stmt.setInt(1, empleado.getDNI());//1 seria el parametro de la consulta, es dcir a: ?
+            stmt.setString(2, empleado.getNombre());
+            stmt.setString(3, empleado.getDireccion());
+            stmt.setString(4, empleado.getNroTelefono());
+            stmt.setDouble(5, empleado.getSueldoBase());
+            stmt.setDouble(6, empleado.getPuntos());
+            stmt.setBoolean(7, empleado.isTipo_empleado());//tipo_empleado es booleano
+            stmt.setInt(8, empleado.getIdEmpleado());
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        return registros;
+    }
+    
+    
+    
+    
     public ArrayList<unCurso> seleccionar_Cursos_Hechos(int id__){
         Connection conn = null;
         PreparedStatement stmt = null;
