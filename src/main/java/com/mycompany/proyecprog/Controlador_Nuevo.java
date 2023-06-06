@@ -31,7 +31,7 @@ public class Controlador_Nuevo implements ActionListener{
                 String Direccion= nuevo.nuevoDireccion.getText();
                 String Telefono=nuevo.nuevoTelefono.getText();
             
-           if(nuevo.checkPermanente.isEnabled()){
+           if(nuevo.checkPermanente.isSelected()){
                 if(DNI>0){
                     Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, 0001, 1,true);
                 //insertar="INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos) VALUES("+DNI+","+Nombre+","+Direccion+","+Telefono+",50000,0";
@@ -42,7 +42,7 @@ public class Controlador_Nuevo implements ActionListener{
                     JOptionPane.showMessageDialog(null,"Dni tiene que ser mayor a 0");
               //crear exception de cuando el dni es menor a 0
             }
-            }else{
+            }else {
                if(DNI>0){
                     Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, 0001, 1,false);
                 //insertar="INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos) VALUES("+DNI+","+Nombre+","+Direccion+","+Telefono+",50000,0";

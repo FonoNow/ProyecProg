@@ -29,7 +29,7 @@ public class Controlador_Consulta implements ActionListener {
             
             int dnii=Integer.parseInt(consu.consulta_dni.getText());
             e1=em.seleccionarDNI(dnii);
-            
+            //if(e1.)
             consu.nombre_consulta.setText(e1.getNombre());
             consu.telefono_consulta.setText(e1.getNroTelefono());
             consu.direccion_consulta.setText(e1.getDireccion());
@@ -40,11 +40,15 @@ public class Controlador_Consulta implements ActionListener {
             }
         }
         if(e.getSource() ==consu.boton_cursos){
-            if(e1.)
+            System.out.println(e1.getIdEmpleado());
+            if(e1.getIdEmpleado()!= 0){
             System.out.println(e1.getIdEmpleado());
             int cur=em.obtenerCurso(e1.getIdEmpleado());
             System.out.println(em.obtenerCurso(e1.getIdEmpleado()));
             JOptionPane.showMessageDialog(null,"La cantidad de cursos realizados por: "+e1.getNombre()+ " es "+cur);
+            }else{
+                JOptionPane.showMessageDialog(null, "Tiene que seleccionar un empleado primero");
+            }
         }
         if(e.getSource()==consu.agregar_curso){
             
