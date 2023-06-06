@@ -35,6 +35,11 @@ public class Controlador_Menu implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() ==menu.boton_nuevoempleado){
+            contnuevo.nuevo.nuevoDNI.setText("");
+            contnuevo.nuevo.nuevoTelefono.setText("0");
+            contnuevo.nuevo.nuevoNombre.setText("");
+            contnuevo.nuevo.nuevoDireccion.setText("");
+            contnuevo.nuevo.checkPermanente.setSelected(false);
             contnuevo.nuevo.setVisible(true);
 
 

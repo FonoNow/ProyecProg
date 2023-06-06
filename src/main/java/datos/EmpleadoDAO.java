@@ -18,7 +18,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_INSERTAR_EMPLEADO
             = "INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado) VALUES (?,?,?,?,?,?,?);";
 
-    private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado;";
+    private static final String SQL_SELECCIONAR_EMPLEADO = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado ORDER BY DNI ASC;";
     //lo conveniente es crear las consultas al principio
     
     private static final String SQL_SELECIONAR_DNI = "select id,DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos,tipo_empleado from empleado WHERE DNI= ?";

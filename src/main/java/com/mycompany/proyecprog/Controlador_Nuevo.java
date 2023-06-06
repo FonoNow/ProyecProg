@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Controlador_Nuevo implements ActionListener{
     public Nuevo nuevo;
+    private int sueldo;
     public Controlador_Nuevo(){
         nuevo=new Nuevo();
         nuevo.boton_crear.addActionListener(this);
@@ -33,7 +34,7 @@ public class Controlador_Nuevo implements ActionListener{
             
            if(nuevo.checkPermanente.isSelected()){
                 if(DNI>0){
-                    Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, 0001, 1,true);
+                    Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, sueldo, 1,true);
                 //insertar="INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos) VALUES("+DNI+","+Nombre+","+Direccion+","+Telefono+",50000,0";
                 empleadoDao.insertar(err);
                 JOptionPane.showMessageDialog(null,"Empleado creado con exito");
@@ -44,12 +45,15 @@ public class Controlador_Nuevo implements ActionListener{
             }
             }else {
                if(DNI>0){
-                    Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, 0001, 1,false);
+                    Empleado err = new Empleado(DNI, Nombre, Direccion, Telefono, sueldo, 1,false);
                 //insertar="INSERT INTO empleado(DNI,Nombre,Direccion,NroTelefono,SueldoBase,Puntos) VALUES("+DNI+","+Nombre+","+Direccion+","+Telefono+",50000,0";
                 empleadoDao.insertar(err);
                 JOptionPane.showMessageDialog(null,"Empleado creado con exito");
                 nuevo.setVisible(false);
-           }
+           }else{
+                    JOptionPane.showMessageDialog(null,"Dni tiene que ser mayor a 0");
+              //crear exception de cuando el dni es menor a 0
+            }
            }
         }catch(NumberFormatException a){
           JOptionPane.showMessageDialog(null,"Solo se aceptan numeros para los campos DNI y Telefono");  
