@@ -27,6 +27,14 @@ public class unCurso {
         this.MaxCantMeses = MaxCantMeses;
         
     }
+
+    public unCurso(String Titulo, String FechaInicio, String FechaFin) {
+        this.Titulo = Titulo;
+        this.FechaInicio = FechaInicio;
+        this.FechaFin = FechaFin;
+    }
+    
+    
     
     public unCurso(int IDCodigo, String Titulo, int Puntos, int CargaHoraria ,int MaxCantMeses) {
         this.IDCodigo = IDCodigo;

@@ -2,6 +2,7 @@ package datos;
 
 import static datos.Conexion.*;
 import com.mycompany.proyecprog.Empleado;
+import com.mycompany.proyecprog.unCurso;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,48 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_ELIMINAR_EMPLEADO="DELETE FROM empleado WHERE id = ?;";
     
     private static final String SQL_OBTENERCURSO = "SELECT contar_cursos_realizados(?) AS cantidad; ";
+    
+    private static final String SQL_MUESTRA_CURSOS_REALIZADOS=
+    "SELECT e.DNI DNIempleado, e.Nombre Nombre_Empleado, c.Titulo as titulo curso, cr.fecha_inicio, cr.fecha_fin FROM empleado e INNER JOIN cursos_realizados cr ON e.id = cr.id_empl INNER JOIN cursos c ON cr.cod_curso = c.Codigo WHERE id= ?;";
+    
+    public ArrayList<unCurso> seleccionar_Cursos_Hechos(int id__){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        unCurso cursos = null;
+        ArrayList<unCurso> arrayCursos = new ArrayList<>();
+        
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_MUESTRA_CURSOS_REALIZADOS);
+            stmt.setInt(1, id__);
+            rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    String titulo = rs.getString("titulo");
+                    String fechaIni = rs.getString("cr.fecha_inicio");
+                    String fecha_fin = rs.getString("fecha_fin");
+                    
+                    cursos=new unCurso(titulo, fechaIni, fecha_fin);
+                    arrayCursos.add(cursos);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                Conexion.close(rs);
+                Conexion.close(stmt);
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return arrayCursos;
+    }
+    
+    
+    
     
     public int obtenerCurso(int iddd){
         Connection conn = null;
@@ -98,7 +141,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     
     public ArrayList<Empleado> seleccionar() {
         Connection conn = null;//variable de tipo conexion
-        PreparedStatement stmt = null;          //en este caso es mas conveniente usar preparedstatement para trabajar conq querys
+        PreparedStatement stmt = null;//en este caso es mas conveniente usar preparedstatement para trabajar conq querys
         ResultSet rs = null;//devuelve una consulta
         Empleado empleado = null;
         ArrayList<Empleado> empleados = new ArrayList<>();
