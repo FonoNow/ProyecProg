@@ -25,6 +25,36 @@ public class CursoDAO {
       
      private static final String SQL_ELIMINAR_CURSO=
              "DELETE FROM cursos WHERE codigo = ?;";
+     
+     private static final String SQL_INSERTAR_CURSOS_REALIZADO=
+             "insert into cursos_realizados (cod_curso, id_empl) values (?,?);";
+     
+     
+     
+     public int insertar_cur_reali(unCurso curso, Empleado empleado){
+        Connection conn=null;
+        PreparedStatement stmt= null;
+        int registros = 0;
+        try {
+            conn = getConnection();
+            stmt=conn.prepareCall(SQL_INSERTAR_CURSOS_REALIZADO);
+            stmt.setInt(1, curso.getIDCodigo());
+            stmt.setInt(2, empleado.getIdEmpleado());
+            registros=stmt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                close(stmt);
+                close(conn);
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     }
+        return registros;
+     }
+     
              
      public int insertarCurso(unCurso curso){
         Connection conn=null;
