@@ -7,6 +7,7 @@ package com.mycompany.proyecprog;
 import datos.CursoDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,8 @@ public class Controlador_Menu implements ActionListener{
    public Controlador_Nuevo contnuevo;
    public Controlador_Consulta contconsu;
    public Controlador_Ver_empleados contveremple;
+   public CursoDAO cur= new CursoDAO();
+   public ArrayList<unCurso> cursos= new ArrayList<unCurso>();
 
     public Controlador_Menu() {
         this.menu = new Menu();
@@ -45,7 +48,12 @@ public class Controlador_Menu implements ActionListener{
 
         }
         if(e.getSource()==menu.Consultar){
+            contconsu.consu.seleccionar_curso.removeAllItems();
             contconsu.consu.setVisible(true);
+            cursos=cur.seleccionarCurso();
+            for(int i=0;i<cursos.size();i++){
+            contconsu.consu.seleccionar_curso.addItem(cursos.get(i).getTitulo());
+        }
         }
         if(e.getSource()==menu.boton_listaempleados){
             contveremple.vistaempleados.setVisible(true);

@@ -51,6 +51,10 @@ public class unCurso {
         this.CargaHoraria = CargaHoraria;
         this.MaxCantMeses = MaxCantMeses;
     }
+
+    unCurso() {
+        
+    }
    
    
    

@@ -15,12 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class Controlador_Consulta implements ActionListener {
     public Consulta consu;
+    public Controlador_ver_cursos contcur;
     EmpleadoDAO em = new EmpleadoDAO();
-            Empleado e1 = new Empleado();
+    Empleado e1 = new Empleado();
     public Controlador_Consulta(){
         consu = new Consulta();
+        contcur= new Controlador_ver_cursos();
         consu.boton_consultar.addActionListener(this);
         consu.boton_cursos.addActionListener(this);
+        consu.agregar_curso.addActionListener(this);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -40,18 +43,32 @@ public class Controlador_Consulta implements ActionListener {
             }
         }
         if(e.getSource() ==consu.boton_cursos){
-            System.out.println(e1.getIdEmpleado());
             if(e1.getIdEmpleado()!= 0){
+            contcur.arrayListCurso= em.seleccionar_Cursos_Hechos(e1.getIdEmpleado());
+            contcur.vistacursos.setVisible(true);
+            contcur.vistacursos.cursos.setModel(contcur.tablacursos(contcur.arrayListCurso));
+            }else{
+                JOptionPane.showMessageDialog(null, "Tiene que seleccionar un empleado primero");
+            }
+            /* System.out.println(e1.getIdEmpleado());
+            
             System.out.println(e1.getIdEmpleado());
             int cur=em.obtenerCurso(e1.getIdEmpleado());
             System.out.println(em.obtenerCurso(e1.getIdEmpleado()));
             JOptionPane.showMessageDialog(null,"La cantidad de cursos realizados por: "+e1.getNombre()+ " es "+cur);
             }else{
-                JOptionPane.showMessageDialog(null, "Tiene que seleccionar un empleado primero");
-            }
+                
+            }*/
         }
+        
         if(e.getSource()==consu.agregar_curso){
-            
+            if(e1.getIdEmpleado()!=0){
+                JOptionPane.showMessageDialog(null,"No implementado");
+                //consu.seleccionar_curso.getSelectedItem()
+                // falta consulta de mysql para insertar cursos realizados
+            }else{
+                JOptionPane.showMessageDialog(null,"Tiene que seleccionar un empleado primero");
+            }
         }
     }
 }

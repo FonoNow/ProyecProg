@@ -56,12 +56,12 @@ public class CursoDAO {
      
      
      
-     public List<unCurso> seleccionarCurso() {
+     public ArrayList<unCurso> seleccionarCurso() {
         Connection conn = null;//variable de tipo conexion
         PreparedStatement stmt = null;          //en este caso es mas conveniente usar preparedstatement para trabajar conq querys
         ResultSet rs = null;//devuelve una consulta
         unCurso curso = null;
-        List<unCurso> cursos = new ArrayList<>();
+        ArrayList<unCurso> cursos = new ArrayList<>();
         /*
             ahora nos conectamos con la base de datos
             como la conexion puede fallar se encierra en un try catch
