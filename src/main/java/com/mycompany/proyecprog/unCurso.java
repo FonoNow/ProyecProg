@@ -64,7 +64,12 @@ public class unCurso {
    
    
    
-   
+   @Override
+   public String toString(){
+       
+       return Titulo;
+       
+   }
 
     public int getIDCodigo() {
         return IDCodigo;

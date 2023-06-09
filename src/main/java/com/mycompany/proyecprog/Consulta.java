@@ -88,8 +88,8 @@ public class Consulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(seleccionar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
+                        .addComponent(seleccionar_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
                         .addComponent(agregar_curso))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -207,7 +207,7 @@ public class Consulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JTextField nombre_consulta;
-    public javax.swing.JComboBox<String> seleccionar_curso;
+    public javax.swing.JComboBox<unCurso> seleccionar_curso;
     public javax.swing.JTextField telefono_consulta;
     // End of variables declaration//GEN-END:variables
 }

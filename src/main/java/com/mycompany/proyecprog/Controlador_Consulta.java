@@ -63,6 +63,7 @@ public class Controlador_Consulta implements ActionListener {
         
         if(e.getSource()==consu.agregar_curso){
             if(e1.getIdEmpleado()!=0){
+                
                 JOptionPane.showMessageDialog(null,"No implementado");
                 //consu.seleccionar_curso.getSelectedItem()
                 // falta consulta de mysql para insertar cursos realizados

@@ -52,7 +52,7 @@ public class Controlador_Menu implements ActionListener{
             contconsu.consu.setVisible(true);
             cursos=cur.seleccionarCurso();
             for(int i=0;i<cursos.size();i++){
-            contconsu.consu.seleccionar_curso.addItem(cursos.get(i).getTitulo());
+            contconsu.consu.seleccionar_curso.addItem(cursos.get(i));
         }
         }
         if(e.getSource()==menu.boton_listaempleados){
