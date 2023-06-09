@@ -50,6 +50,11 @@ public class Consulta extends javax.swing.JFrame {
         jLabel2.setText("DNI");
 
         boton_consultar.setText("Consultar");
+        boton_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_consultarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Nombre");
 
@@ -65,6 +70,12 @@ public class Consulta extends javax.swing.JFrame {
         agregar_curso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregar_cursoActionPerformed(evt);
+            }
+        });
+
+        seleccionar_curso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seleccionar_cursoActionPerformed(evt);
             }
         });
 
@@ -157,6 +168,14 @@ public class Consulta extends javax.swing.JFrame {
     private void agregar_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_cursoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_agregar_cursoActionPerformed
+
+    private void boton_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_consultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_consultarActionPerformed
+
+    private void seleccionar_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionar_cursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seleccionar_cursoActionPerformed
 
     /**
      * @param args the command line arguments

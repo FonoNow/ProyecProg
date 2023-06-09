@@ -4,7 +4,8 @@
  */
 package com.mycompany.proyecprog;
 
-import datos.EmpleadoDAO;
+
+import datos.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ import javax.swing.JOptionPane;
  * @author Franco
  */
 public class Controlador_Consulta implements ActionListener {
+    public CursoDAO c1;
     public Consulta consu;
     public Controlador_ver_cursos contcur;
     EmpleadoDAO em = new EmpleadoDAO();
@@ -62,14 +64,23 @@ public class Controlador_Consulta implements ActionListener {
         }
         
         if(e.getSource()==consu.agregar_curso){
-            if(e1.getIdEmpleado()!=0){
+            //if(e1.empleadoperma_consulta()){
                 
-                JOptionPane.showMessageDialog(null,"No implementado");
-                //consu.seleccionar_curso.getSelectedItem()
-                // falta consulta de mysql para insertar cursos realizados
+            if(e1.getIdEmpleado()!=0){
+                if(consu.empleadoperma_consulta.getText().equals("si")){
+                    unCurso c = new unCurso();
+                    CursoDAO c1 = new CursoDAO();
+                c=(unCurso) consu.seleccionar_curso.getSelectedItem();
+                c1.insertar_cur_reali(c,e1,"");
+                
+            }else{
+                  JOptionPane.showMessageDialog(null,"debe ser empleado permanente");
+
+                }
+                
             }else{
                 JOptionPane.showMessageDialog(null,"Tiene que seleccionar un empleado primero");
             }
-        }
+            }
     }
 }
