@@ -59,6 +59,12 @@ public class Empleado {
         this.tipo_empleado = tipo_empleado;
     }
 
+    public Empleado(int DNI, String Nombre, int Puntos) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Puntos = Puntos;
+    }
+
     public int getIdEmpleado() {
         return idEmpleado;
     }

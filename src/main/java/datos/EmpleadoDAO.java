@@ -36,6 +36,43 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_UPDATE_PUNTOS_EMPL=
     "UPDATE empleado SET Puntos = ? WHERE id=?; ";
     
+    private static final String SQL_MAXIMO_PUNTAJE=
+            "SELECT id, Nombre, puntos FROM empleado ORDER BY puntos DESC;";
+    
+    
+    public ArrayList<Empleado> MaximoPuntaje(){
+        Connection conn = null;//variable de tipo conexion
+        PreparedStatement stmt = null;//en este caso es mas conveniente usar preparedstatement para trabajar conq querys
+        ResultSet rs = null;//devuelve una consulta
+        Empleado empleado = null;
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        
+        try {
+            conn = getConnection();
+            stmt = conn.prepareStatement(SQL_MAXIMO_PUNTAJE);
+            
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("Nombre");
+                int puntos = rs.getInt("Puntos");
+                empleado = new Empleado(id, nombre,puntos);
+                empleados.add(empleado);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                Conexion.close(rs);
+                Conexion.close(stmt);
+                Conexion.close(conn);
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.out);
+            }
+        }
+        return empleados;
+    }
+    
     
     public int actualizarPuntos(Empleado empleado){
         Connection conn=null;
