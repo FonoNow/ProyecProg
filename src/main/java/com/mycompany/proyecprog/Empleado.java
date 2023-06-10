@@ -19,6 +19,7 @@ public class Empleado {
     private  double SueldoBase;
     private  int Puntos;
     private boolean tipo_empleado;
+    public double Incentivo= 1.5;
     public ArrayList <unCurso> A = new ArrayList();
     public Empleado() {
     }
@@ -34,7 +35,11 @@ public class Empleado {
         this.Puntos = Puntos;
         this.tipo_empleado = tipo_empleado;
     }
-    
+     public Empleado(int DNI, String Nombre, int Puntos) {
+        this.DNI = DNI;
+        this.Nombre = Nombre;
+        this.Puntos = Puntos;
+    }
 
     public Empleado(int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos) {
         this.DNI = DNI;
@@ -45,8 +50,27 @@ public class Empleado {
         this.Puntos = Puntos;
     }
     public double importeBruto(){
-        return 0;
+        double SueldoFinal=SueldoBase;
+        if(tipo_empleado){
+            SueldoFinal+=Puntos*Incentivo;
+        }
+        return SueldoFinal;
     };
+    public boolean puedeRealizar(unCurso curso){
+        boolean bol=false;
+        boolean bole=false;
+        for(int i=0;i<A.size();i++){
+            if(A.get(i).getTitulo().equals(curso.getTitulo())){
+                bole=true;
+            }
+        }
+        if(!bole){
+        if(curso.getPuntos()<= Puntos){
+            bol=true;
+        }
+        }
+        return bol;
+    }
     //constructor para la clase EmpleadoDAO
     public Empleado(int idEmpleado, int DNI, String Nombre, String Direccion, String NroTelefono, double SueldoBase, int Puntos, boolean tipo_empleado) {
         this.idEmpleado = idEmpleado;
@@ -57,12 +81,6 @@ public class Empleado {
         this.SueldoBase = SueldoBase;
         this.Puntos = Puntos;
         this.tipo_empleado = tipo_empleado;
-    }
-
-    public Empleado(int DNI, String Nombre, int Puntos) {
-        this.DNI = DNI;
-        this.Nombre = Nombre;
-        this.Puntos = Puntos;
     }
 
     public int getIdEmpleado() {
@@ -119,7 +137,7 @@ public class Empleado {
     }
 
     public void setPuntos(int Puntos) {
-        this.Puntos = Puntos;
+        this.Puntos += Puntos;
     }
 
     public boolean isTipo_empleado() {

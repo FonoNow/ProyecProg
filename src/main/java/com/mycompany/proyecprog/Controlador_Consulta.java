@@ -8,6 +8,9 @@ package com.mycompany.proyecprog;
 import datos.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +37,7 @@ public class Controlador_Consulta implements ActionListener {
             
             int dnii=Integer.parseInt(consu.consulta_dni.getText());
             e1=em.seleccionarDNI(dnii);
+            e1.A=em.seleccionar_Cursos_Hechos(e1.getIdEmpleado());
             //if(e1.)
             consu.nombre_consulta.setText(e1.getNombre());
             consu.telefono_consulta.setText(e1.getNroTelefono());
@@ -70,8 +74,27 @@ public class Controlador_Consulta implements ActionListener {
                 if(consu.empleadoperma_consulta.getText().equals("si")){
                     unCurso c = new unCurso();
                     CursoDAO c1 = new CursoDAO();
-                c=(unCurso) consu.seleccionar_curso.getSelectedItem();
-                c1.insertar_cur_reali(c,e1,"");
+                    Calendar cal = Calendar.getInstance(); 
+                    c=(unCurso) consu.seleccionar_curso.getSelectedItem();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Date tiempoactual= cal.getTime();
+                    String tempactual=sdf.format(tiempoactual);
+                    cal.add(Calendar.MONTH,c.getMaxCantMeses() );  
+                    Date updatedDate = cal.getTime();  
+                      
+                    String formattedDate = sdf.format(updatedDate);  
+                    
+                    
+                    
+                    if(e1.puedeRealizar(c)){
+                        e1.setPuntos(1);
+                        em.actualizarPuntos(e1);
+                        c1.insertar_cur_reali(c,e1,tempactual,formattedDate);
+                        JOptionPane.showMessageDialog(null,"El Curso a sido insertado con exito");
+                    
+                    }else{
+                        JOptionPane.showMessageDialog(null,"No tiene los puntos suficientes para realizar el curso, debe realizar cursos anteriores o ya a realizado el curso");
+                    }
                 
             }else{
                   JOptionPane.showMessageDialog(null,"debe ser empleado permanente");

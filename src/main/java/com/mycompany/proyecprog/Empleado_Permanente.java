@@ -42,9 +42,7 @@ public class Empleado_Permanente extends Empleado {
         
         
     }
-    public boolean puedeRealizar(unCurso curso){
-        return true;
-    }
+   
     public int maximoPuntaje(){
         return 0;
         

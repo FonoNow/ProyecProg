@@ -65,7 +65,8 @@ public class Controlador_Menu implements ActionListener{
             String titulo=JOptionPane.showInputDialog("Ingrese titulo del curso");
             int cargahoraria=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cargar horaria"));
             int tiempolimite=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de meses que tiene para hacer el curso consecutivo"));
-            unCurso c1=new unCurso(titulo,1,cargahoraria,tiempolimite);
+            int puntos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de puntos requeridos para realizar el curso"));
+            unCurso c1=new unCurso(titulo,puntos,cargahoraria,tiempolimite);
             cur.insertarCurso(c1);
         }
     }

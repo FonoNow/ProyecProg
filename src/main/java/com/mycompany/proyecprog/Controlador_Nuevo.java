@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Controlador_Nuevo implements ActionListener{
     public Nuevo nuevo;
-    private int sueldo;
+    private int sueldo=50000;
     public Controlador_Nuevo(){
         nuevo=new Nuevo();
         nuevo.boton_crear.addActionListener(this);

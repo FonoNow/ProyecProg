@@ -15,6 +15,7 @@ public class ver_cursos extends javax.swing.JFrame {
      */
     public ver_cursos() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

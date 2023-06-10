@@ -27,11 +27,12 @@ public class Controlador_Ver_empleados implements ActionListener{
         this.arrayListEmpleado = em.seleccionar();
         vistaempleados.modificar.addActionListener(this);
         vistaempleados.actualizar.addActionListener(this);
+        
     }
     public DefaultTableModel tablaempleados(ArrayList<Empleado> arrayListEmpleado){
         int contadorTabla=0;
         String x[][]={};
-        String nombresColumnas[]= {"Dni","Nombre","Direccion","Telefono"};
+        String nombresColumnas[]= {"Dni","Nombre","Direccion","Telefono","SueldoBruto"};
         tEmpleados = new DefaultTableModel(x,nombresColumnas);
         if(arrayListEmpleado != null){
            for(int i=0;i<arrayListEmpleado.size();i++){
@@ -40,6 +41,7 @@ public class Controlador_Ver_empleados implements ActionListener{
                 tEmpleados.setValueAt(arrayListEmpleado.get(i).getNombre(), contadorTabla, 1);
                 tEmpleados.setValueAt(arrayListEmpleado.get(i).getDireccion(), contadorTabla, 2);
                 tEmpleados.setValueAt(arrayListEmpleado.get(i).getNroTelefono(), contadorTabla, 3);
+                tEmpleados.setValueAt(arrayListEmpleado.get(i).importeBruto(), contadorTabla, 4);
                 contadorTabla++;
                
            }
@@ -60,6 +62,7 @@ public class Controlador_Ver_empleados implements ActionListener{
             String Direccion=JOptionPane.showInputDialog("Ingrese direccion o deje vacio si no quiere modificar");
             String Telefono=JOptionPane.showInputDialog("Ingrese telefono o deje vacio si no desea modificar");
             String bol=JOptionPane.showInputDialog("Ingrese 1 si desea que el empleado sea permanente o 0 para no permanente, o deje vacio si no desea cambiarlo");
+            String sueldo=JOptionPane.showInputDialog("Ingrese el nuevo sueldo base o deje vacio si no desea modificar");
             boolean bole;
             if(bol=="1"){
                 bole=true;
@@ -86,12 +89,16 @@ public class Controlador_Ver_empleados implements ActionListener{
             if(!"".equals(bol)){
                 e1.setTipo_empleado(bole);
             }
+            if(!"".equals(sueldo)){
+                e1.setSueldoBase(Double.parseDouble(sueldo));
+            }
             em.actualizar(e1);
+            JOptionPane.showMessageDialog(null,"Se a modificado con exito");
         }
     catch(ArrayIndexOutOfBoundsException a){
         JOptionPane.showMessageDialog(null,"No se a seleccionado ningun empleado");
     }catch(NumberFormatException a){
-        JOptionPane.showMessageDialog(null, "Solo se permiten numeros para los campos de DNI y telefono");
+        JOptionPane.showMessageDialog(null, "Solo se permiten numeros para los campos de DNI , telefono y sueldo");
     }
     
 }
