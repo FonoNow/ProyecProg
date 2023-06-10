@@ -28,8 +28,7 @@ public class EmpleadoDAO {//si tenemos muchas clases de entidad se debe crear un
     private static final String SQL_OBTENERCURSO = "SELECT contar_cursos_realizados(?) AS cantidad; ";
     
     private static final String SQL_MUESTRA_CURSOS_REALIZADOS=
-    "SELECT e.DNI DNIempleado, e.Nombre Nombre_Empleado, c.Titulo as titulo curso, cr.fecha_inicio, cr.fecha_fin FROM empleado e INNER JOIN cursos_realizados cr ON e.id = cr.id_empl INNER JOIN cursos c ON cr.cod_curso = c.Codigo WHERE id= ?;";
-    
+    "SELECT e.DNI DNIempleado, e.Nombre Nombre_Empleado, c.Titulo as titulo, cr.cod_curso, cr.fecha_inicio, cr.fecha_fin FROM empleado e INNER JOIN cursos_realizados cr ON e.id = cr.id_empl INNER JOIN cursos c ON cr.cod_curso = c.Codigo WHERE id= ?;";
     private static final String SQL_UPDATE_EMPLEADO=
     "UPDATE empleado SET DNI = ?, Nombre = ?, Direccion = ?, NroTelefono = ?, SueldoBase = ?, Puntos = ?, tipo_empleado = ? WHERE id=?;";
     
