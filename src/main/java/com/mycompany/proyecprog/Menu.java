@@ -31,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
         Consultar = new javax.swing.JButton();
         boton_listaempleados = new javax.swing.JButton();
         crear_curso = new javax.swing.JButton();
+        maxPuntos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,8 @@ public class Menu extends javax.swing.JFrame {
 
         crear_curso.setText("Crear Curso");
 
+        maxPuntos.setText("MaximoPuntaje");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,7 +61,9 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(boton_nuevoempleado))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(boton_listaempleados)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(maxPuntos)
+                            .addComponent(boton_listaempleados))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(crear_curso)
@@ -76,7 +81,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_listaempleados)
                     .addComponent(crear_curso))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(maxPuntos)
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,5 +133,6 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton boton_listaempleados;
     public javax.swing.JButton boton_nuevoempleado;
     public javax.swing.JButton crear_curso;
+    public javax.swing.JButton maxPuntos;
     // End of variables declaration//GEN-END:variables
 }

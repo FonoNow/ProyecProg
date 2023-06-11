@@ -19,6 +19,7 @@ public class Controlador_Menu implements ActionListener{
    public Controlador_Nuevo contnuevo;
    public Controlador_Consulta contconsu;
    public Controlador_Ver_empleados contveremple;
+   public Controlador_ver_maxPuntos contverpuntos;
    public CursoDAO cur= new CursoDAO();
    public ArrayList<unCurso> cursos= new ArrayList<unCurso>();
 
@@ -29,8 +30,10 @@ public class Controlador_Menu implements ActionListener{
         menu.crear_curso.addActionListener(this);
         contnuevo= new Controlador_Nuevo();
         contconsu= new Controlador_Consulta();
+        contverpuntos=new Controlador_ver_maxPuntos();
         contveremple= new Controlador_Ver_empleados();
         menu.Consultar.addActionListener(this);
+        menu.maxPuntos.addActionListener(this);
     }
    public void Menuvisible(){
        menu.setVisible(true);
@@ -68,6 +71,10 @@ public class Controlador_Menu implements ActionListener{
             int puntos=Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de puntos requeridos para realizar el curso"));
             unCurso c1=new unCurso(titulo,puntos,cargahoraria,tiempolimite);
             cur.insertarCurso(c1);
+        }
+        if(e.getSource()==menu.maxPuntos){
+            contverpuntos.ver_puntos.setVisible(true);
+            contverpuntos.ver_puntos.jTable1.setModel(contverpuntos.tablapuntos(contverpuntos.arrayListEmpleado));
         }
     }
 }
