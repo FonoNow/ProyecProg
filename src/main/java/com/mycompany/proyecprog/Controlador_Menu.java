@@ -51,6 +51,11 @@ public class Controlador_Menu implements ActionListener{
 
         }
         if(e.getSource()==menu.Consultar){
+            contconsu.consu.nombre_consulta.setText("");
+            contconsu.consu.consulta_dni.setText("");
+            contconsu.consu.direccion_consulta.setText("");
+            contconsu.consu.telefono_consulta.setText("");
+            contconsu.consu.empleadoperma_consulta.setText("");
             contconsu.consu.seleccionar_curso.removeAllItems();
             contconsu.consu.setVisible(true);
             cursos=cur.seleccionarCurso();

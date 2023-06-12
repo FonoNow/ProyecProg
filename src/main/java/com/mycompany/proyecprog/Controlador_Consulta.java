@@ -71,7 +71,9 @@ public class Controlador_Consulta implements ActionListener {
             //if(e1.empleadoperma_consulta()){
                 
             if(e1.getIdEmpleado()!=0){
+                
                 if(consu.empleadoperma_consulta.getText().equals("si")){
+                    e1.A=em.seleccionar_Cursos_Hechos(e1.getIdEmpleado());
                     unCurso c = new unCurso();
                     CursoDAO c1 = new CursoDAO();
                     Calendar cal = Calendar.getInstance(); 

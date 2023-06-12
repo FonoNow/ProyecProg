@@ -19,7 +19,7 @@ public class Empleado {
     private  double SueldoBase;
     private  int Puntos;
     private boolean tipo_empleado;
-    public double Incentivo= 1.5;
+    public double Incentivo= 10.5;
     public ArrayList <unCurso> A = new ArrayList();
     public Empleado() {
     }
@@ -61,6 +61,7 @@ public class Empleado {
         boolean bole=false;
         for(int i=0;i<A.size();i++){
             if(A.get(i).getTitulo().equals(curso.getTitulo())){
+                System.out.println(A.get(i).getTitulo()+" "+curso.getTitulo());
                 bole=true;
             }
         }
