@@ -27,13 +27,20 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         boton_nuevoempleado = new javax.swing.JButton();
         Consultar = new javax.swing.JButton();
         boton_listaempleados = new javax.swing.JButton();
-        crear_curso = new javax.swing.JButton();
         maxPuntos = new javax.swing.JButton();
+        crear_curso = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         boton_nuevoempleado.setText("Crear nuevo empleado");
         boton_nuevoempleado.addActionListener(new java.awt.event.ActionListener() {
@@ -41,49 +48,74 @@ public class Menu extends javax.swing.JFrame {
                 boton_nuevoempleadoActionPerformed(evt);
             }
         });
+        jPanel1.add(boton_nuevoempleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 160, -1));
 
         Consultar.setText("Consultar Empleado");
+        jPanel1.add(Consultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 160, -1));
 
         boton_listaempleados.setText("Lista Empleados");
-
-        crear_curso.setText("Crear Curso");
+        jPanel1.add(boton_listaempleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 160, -1));
 
         maxPuntos.setText("MaximoPuntaje");
+        maxPuntos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maxPuntosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(maxPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 160, -1));
+
+        crear_curso.setText("Crear Curso");
+        crear_curso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crear_cursoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(crear_curso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 160, 20));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MENU");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(243, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(207, 207, 207))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(45, 45, 45))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 610, 150));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("HAGA CLICK PARA ABRIR EL RECURSO ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(boton_nuevoempleado))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(maxPuntos)
-                            .addComponent(boton_listaempleados))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(crear_curso)
-                    .addComponent(Consultar))
-                .addGap(31, 31, 31))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_nuevoempleado)
-                    .addComponent(Consultar))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_listaempleados)
-                    .addComponent(crear_curso))
-                .addGap(28, 28, 28)
-                .addComponent(maxPuntos)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,6 +124,14 @@ public class Menu extends javax.swing.JFrame {
     private void boton_nuevoempleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoempleadoActionPerformed
        
     }//GEN-LAST:event_boton_nuevoempleadoActionPerformed
+
+    private void crear_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crear_cursoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crear_cursoActionPerformed
+
+    private void maxPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxPuntosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maxPuntosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +173,10 @@ public class Menu extends javax.swing.JFrame {
     public javax.swing.JButton boton_listaempleados;
     public javax.swing.JButton boton_nuevoempleado;
     public javax.swing.JButton crear_curso;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     public javax.swing.JButton maxPuntos;
     // End of variables declaration//GEN-END:variables
 }
